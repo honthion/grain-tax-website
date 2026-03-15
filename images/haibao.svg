@@ -1,0 +1,61 @@
+<svg width="420mm" height="594mm" viewBox="0 0 420 594" xmlns="http://www.w3.org/2000/svg">
+
+    <style>
+
+        .big{
+        font-family: Impact, Arial Black, sans-serif;
+        font-size:48px;
+        fill:black;
+        text-anchor:middle;
+        }
+
+        .question{
+        font-family: Impact, Arial Black, sans-serif;
+        font-size:60px;
+        fill:#8B0000;
+        text-anchor:middle;
+        }
+
+        .cn{
+        font-family: Noto Sans SC, Arial;
+        font-size:32px;
+        fill:black;
+        text-anchor:middle;
+        }
+
+        .footer{
+        font-family: Arial;
+        font-size:24px;
+        fill:black;
+        text-anchor:middle;
+        }
+
+    </style>
+
+    <rect width="100%" height="100%" fill="white"/>
+
+    <text x="210" y="25"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="15"
+          letter-spacing="4"
+          fill="#777777"
+          text-anchor="middle"
+          style="text-transform:uppercase;">
+        A MEMORY PROJECT
+    </text>
+
+    <text x="210" y="80" class="big">FARMERS FED</text>
+    <text x="210" y="130" class="big">THE NATION</text>
+
+    <text x="210" y="210" class="question">WHERE IS THEIR</text>
+    <text x="210" y="270" class="question">PENSION?</text>
+
+    <text x="210" y="340" class="cn">农民养活了国家</text>
+    <text x="210" y="380" class="cn">他们的养老金在哪里？</text>
+
+
+    <image href="grainmemory.org.svg" shape-rendering="crispEdges" x="140" y="400" width="160" height="160"/>
+
+    <text x="210" y="580" class="footer">SCAN THE STORY · grainmemory.org</text>
+
+</svg>
