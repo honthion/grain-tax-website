@@ -1,0 +1,26 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="print" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Math.nothing.很高兴认识你" />
+          <option value="Math.狗" />
+          <option value="Math.香蕉" />
+          <option value="Math.苹果" />
+          <option value="Math.猫" />
+          <option value="Math.鸡蛋" />
+          <option value="Math.friut" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
