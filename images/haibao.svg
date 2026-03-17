@@ -25,7 +25,7 @@
 
         .footer{
         font-family: Arial;
-        font-size:24px;
+        font-size:21px;
         fill:black;
         text-anchor:middle;
         }
@@ -50,12 +50,12 @@
     <text x="210" y="210" class="question">WHERE IS THEIR</text>
     <text x="210" y="270" class="question">PENSION?</text>
 
-    <text x="210" y="340" class="cn">农民养活了国家</text>
-    <text x="210" y="380" class="cn">他们的养老金在哪里？</text>
+    <text x="210" y="335" class="cn">农民养活了国家</text>
+    <text x="210" y="375" class="cn">他们的养老金在哪里？</text>
 
 
-    <image href="grainmemory.org.svg" shape-rendering="crispEdges" x="140" y="400" width="160" height="160"/>
+    <image href="grainmemory.org.svg" shape-rendering="crispEdges" x="140" y="395" width="160" height="160"/>
 
-    <text x="210" y="580" class="footer">SCAN THE STORY · grainmemory.org</text>
+    <text x="210" y="575" class="footer">SCAN THE STORY · grainmemory.org</text>
 
 </svg>
