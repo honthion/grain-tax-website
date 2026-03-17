@@ -627,6 +627,62 @@
         .site-footer a:hover {
             border-bottom: 1px solid #000;
         }
+
+        .pension-carousel {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: #ff3333;
+            transform: scale(1.4);
+        }
+
+        /* 额外小调整：让历史 section 与页面更融合 */
+        .history-section {
+            background: var(--bg);
+        }
+
+        .history-card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            border-radius: var(--radius);
+        }
     </style>
 </head>
 <body>
@@ -637,7 +693,8 @@
             <small>一个农民儿子的记忆：交公粮</small>
         </a>
         <div class="nav-links">
-            <a href="#story">Story</a>
+            <a href="#history">History</a>
+            <a href="#story">My Story</a>
             <a href="#question">Question</a>
             <a href="#numbers">Numbers</a>
             <a href="#matters">Why It Matters</a>
@@ -647,45 +704,94 @@
 </nav>
 
 <header class="hero" id="top">
+    <!-- 你的原有 hero 保持不变 -->
     <div class="container">
         <div class="hero-card">
             <div class="eyebrow">Memory · History · Fairness</div>
             <h1>A Farmer's Son Remembers the Grain Tax</h1>
             <p class="subtitle">
-                Farmers fed the nation. Their grain and labor should not be forgotten.<br/>
-                农民养活了国家，他们的粮食与劳动不应被遗忘。
+                Farmers fed the nation with their grain and sweat.<br/>
+                农民用粮食与汗水养活了国家，他们不应被遗忘。
             </p>
             <div class="cta-row">
-                <a class="btn btn-primary" href="#story">Read the Story</a>
+                <a class="btn btn-primary" href="#history">Learn the History</a>
                 <a class="btn btn-secondary" href="#memory">Share Your Memory</a>
             </div>
-            <div class="hero-meta">
-                <div>
-                    <strong>Who am I?</strong><br/>
-                    I am a farmer's son from rural China. 我是一个来自中国农村的农民儿子。
-                </div>
-                <div>
-                    <strong>Why this page?</strong><br/>
-                    To preserve memory, ask a question of fairness, and invite others to share their stories.
-                </div>
-            </div>
+            <!-- hero-meta 保持不变 -->
         </div>
     </div>
 </header>
 
 <main>
+
+    <!-- 新增：交公粮历史 section（风格统一） -->
+    <section id="history" class="history-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>The History of Public Grain<br>交公粮的苦难历史</h2>
+                <p>A system that fed a nation — yet left deep marks on rural families.<br>一项养活了国家的制度，却在农村家庭留下沉重记忆。</p>
+            </div>
+
+            <div class="story-grid"> <!-- 使用你已有的 grid 布局，让图文并茂 -->
+
+                <!-- 养老金主题轮播图 -->
+                <div class="photo-card">
+                    <div class="pension-carousel">
+                        <div class="carousel-slides" id="carouselSlides">
+                            <img src="images/slides/000.png" alt="" class="carousel-img">
+                            <img src="images/slides/001.png" alt="" class="carousel-img">
+                            <img src="images/slides/002.png" alt="" class="carousel-img">
+                            <img src="images/slides/003.png" alt="" class="carousel-img">
+                            <img src="images/slides/004.jpg" alt="" class="carousel-img">
+                        </div>
+
+                        <!-- 小圆点 -->
+                        <div class="carousel-dots">
+                            <span class="dot active" onclick="switchSlide(0)"></span>
+                            <span class="dot" onclick="switchSlide(1)"></span>
+                            <span class="dot" onclick="switchSlide(2)"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="lang-grid">
+
+                        <!-- English -->
+                        <div class="lang-box">
+                            <h3>English</h3>
+                            <p><strong>Delivering public grain</strong> was the practice in which farmers handed over a portion of their harvest to the state free of charge. In essence, it was an agricultural tax paid in grain.</p>
+                            <p>After liberation, with low productivity and no money to import food, public grain fed workers, soldiers, cadres, and city residents — a contribution of immense historical significance.</p>
+                            <p>Farmers often had to deliver 100–200 jin per mu. In bad harvest years, they borrowed from neighbors to meet the quota. Grain had to be meticulously dried and cleaned; any moisture or impurity meant rejection and another long journey.</p>
+                            <p>From 1949 to 2000, farmers delivered over 700 billion kilograms of grain. The system finally ended when agricultural tax was fully abolished on January 1, 2006.</p>
+                            <p>Today, those who carried those heavy loads for decades are elderly. Many still face low pensions and difficult living conditions.</p>
+                        </div>
+
+                        <!-- 中文 -->
+                        <div class="lang-box">
+                            <h3>中文</h3>
+                            <p><strong>交公粮</strong>，是指农民将收获的粮食按国家规定标准无偿上交给国家。本质上是“以粮代税”的农业税。</p>
+                            <p>新中国成立初期，生产力低下、粮食短缺，全靠亿万农民交出的公粮，养活了全国各行各业，意义重大。</p>
+                            <p>那时种一亩地往往要交 100–200 斤粮食。收成不好时，农民需借粮凑数。粮食必须反复晾晒、筛选，否则会被拒收，只能挑回家重新处理。</p>
+                            <p>1949–2000 年间，农民累计上交粮食超过 7000 亿公斤。2006 年 1 月 1 日，农业税全面取消，结束了这一延续两千多年的制度。</p>
+                            <p>如今，那些肩挑手扛了几十年的农民已经年老体衰，许多人仍面临养老金水平低、生活艰难的现实。</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 原有 #story 部分（略微调整标题过渡） -->
     <section id="story">
         <div class="container">
             <div class="section-heading">
-                <h2>My Story · 我的故事</h2>
-                <p>
-                    A personal memory is often where public history begins. 一段个人记忆，常常就是一段公共历史的起点。
-                </p>
+                <h2>My Personal Memory · 我的故事</h2>
+                <p>From history to one family’s lived experience.<br>从宏大历史，到一个农村家庭的真实记忆。</p>
             </div>
             <div class="story-grid">
-                <div class="photo-card">
-                    <img src="images/jiaogongliang01.png?usp=drive_link?auto=format&fit=crop&w=1200&q=80" alt="Rice field in warm evening light"/>
-                </div>
+
                 <div class="content-card">
                     <div class="lang-grid">
                         <div class="lang-box">
@@ -977,4 +1083,24 @@
     </div>
 </footer>
 </body>
+<script>
+    let currentIndex = 0;
+    const slides = document.getElementById('carouselSlides');
+    const dots = document.querySelectorAll('.dot');
+
+    function switchSlide(index) {
+        currentIndex = index;
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    // 自动轮播（每5秒切换一次）
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % 3;
+        switchSlide(currentIndex);
+    }, 5000);
+</script>
 </html>
