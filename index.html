@@ -683,6 +683,41 @@
             padding: 32px;
             border-radius: var(--radius);
         }
+
+        .nav-links a {
+            position: relative;
+            display: inline-block;
+            color: var(--muted);
+            text-decoration: none;
+            padding: 4px 2px;
+            transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--accent-dark);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-dark);
+            font-weight: 700;
+            transform: translateY(-1px);
+            text-shadow: 0 0 6px rgba(201, 162, 39, 0.35),
+            0 0 12px rgba(201, 162, 39, 0.22);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #c9a227, #e1cb79);
+            box-shadow: 0 0 8px rgba(201, 162, 39, 0.45),
+            0 0 14px rgba(201, 162, 39, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -849,8 +884,41 @@
     <section class="question-section" id="question">
         <div class="container">
             <div class="question-card">
-                <div class="big">If officials can receive “deemed contributions,” why can't farmers' grain and labor be recognized too?</div>
-                <p class="cn">如果公务员可以“视同缴费”，为什么农民当年交的公粮和出的义工，不能被视作一种历史性的缴费记录？</p>
+
+                <!-- 核心问题 -->
+                <div class="big">
+                    If public sector employees can receive “deemed contributions,”
+                    why can’t farmers’ past grain deliveries and labor be recognized as well?
+                </div>
+
+                <!-- 中文 -->
+                <p class="cn">
+                    如果体制内人员可以“视同缴费”，为什么农民当年交的公粮和出的义工，
+                    不能被视作一种历史性的缴费记录？
+                </p>
+
+                <!-- 分隔线 -->
+                <div style="width:40px; height:1.5px; background:#b08a57; margin:22px auto;"></div>
+
+                <!-- 英文解释 -->
+                <p style="font-size:14px; color:#888; line-height:1.6; max-width:720px; margin:0 auto;">
+                    <strong>Deemed contributions</strong> refer to a policy in China’s pension system under which
+                    certain groups—primarily public sector employees—are credited with contribution years
+                    for periods before the formal system was established, even if no actual payments were made.
+                </p>
+
+                <!-- 中文解释 -->
+                <p style="font-size:14px; color:#888; line-height:1.6; max-width:720px; margin:12px auto 0;">
+                    “视同缴费”是指在养老保险制度建立之前，一些群体（主要是体制内人员）的工作年限，
+                    在没有实际缴费的情况下，被认定为已缴费年限，并计入养老金计算。
+                </p>
+
+                <!-- 收尾升华 -->
+                <p style="font-size:13px; color:#aaa; margin-top:16px;">
+                    This raises a broader question about how different forms of contribution are recognized,
+                    and how fairness is defined across groups.
+                </p>
+
             </div>
         </div>
     </section>
@@ -952,19 +1020,27 @@
                 </div>
 
                 <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:24px;">
+
                     <div style="padding:18px; border:1px solid var(--line); border-radius:18px; background:#fffaf0;">
-                        <div style="font-weight:800; font-size:1.05rem; margin-bottom:6px;">Resident Pension</div>
-                        <div style="color:var(--muted);">
-                            城乡居民基础养老金以低水平广覆盖为主，领取者中老年农民占多数。
+                        <div style="font-weight:800; font-size:1.05rem; margin-bottom:6px;">
+                            Urban–Rural Resident Pension
+                        </div>
+                        <div style="color:var(--muted); line-height:1.6;">
+                            Designed as a low-level, broad-coverage system, the urban–rural resident pension primarily supports elderly rural populations.<br>
+                            城乡居民基础养老金以低水平、广覆盖为特征，领取者中以农村老年人群为主。
                         </div>
                     </div>
 
                     <div style="padding:18px; border:1px solid var(--line); border-radius:18px; background:#fffaf0;">
-                        <div style="font-weight:800; font-size:1.05rem; margin-bottom:6px;">Civil Servant / Public Institution Pension</div>
-                        <div style="color:var(--muted);">
-                            机关事业单位退休待遇整体水平明显更高，形成了巨大的制度与待遇落差。
+                        <div style="font-weight:800; font-size:1.05rem; margin-bottom:6px;">
+                            Public Sector Pension
+                        </div>
+                        <div style="color:var(--muted); line-height:1.6;">
+                            Pension benefits in the public sector are significantly higher on average, reflecting a structurally different system of contributions and recognition.<br>
+                            体制内养老金整体水平明显更高，反映出制度结构与历史认定方式的差异。
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -977,54 +1053,39 @@
     <section id="matters">
         <div class="container">
             <div class="section-heading">
-                <h2>Why This Matters · 为什么重要</h2>
+                <h2>Why This Should Be Seen · 为什么这件事值得被看见</h2>
                 <p>
-                    This is not only about money. It is also about fairness, recognition, and dignity. 这不仅是养老金问题，也关乎公平、承认与尊严。
+                    This is not only about pension levels. It is also about fairness, historical memory, and the dignity of those who carried these burdens for decades.
+                    这不仅是养老金水平的问题，也关乎公平、历史记忆，以及那些长期承担这些负担者的尊严。
                 </p>
             </div>
+
             <div class="matters-grid">
                 <article class="callout-card">
                     <div class="callout-icon">⚖️</div>
-                    <h3>Fairness · 公平</h3>
-                    <p>When one kind of contribution is recognized but another is forgotten, a question of fairness naturally arises. 当一种付出被承认、另一种付出被遗忘时，公平问题就会出现。</p>
+                    <h3>Fairness & Recognition · 公平与承认</h3>
+                    <p>
+                        When one kind of contribution is formally recognized while another is left outside the system, a serious question of fairness arises.
+                        当一种付出被制度正式承认，而另一种付出长期被排除在外时，公平问题就自然出现了。
+                    </p>
                 </article>
+
                 <article class="callout-card">
                     <div class="callout-icon">📜</div>
-                    <h3>Historical Memory · 历史记忆</h3>
-                    <p>The experiences of rural families should not disappear from public memory. 农村家庭的经历不应从公共记忆中消失。</p>
+                    <h3>History & Memory · 历史与记忆</h3>
+                    <p>
+                        This is not about rewriting history, but about facing it honestly and ensuring that the experiences of rural families are not erased from public memory.
+                        这不是要重写历史，而是要更诚实地面对历史，并确保农村家庭的经历不会从公共记忆中消失。
+                    </p>
                 </article>
+
                 <article class="callout-card">
                     <div class="callout-icon">🌾</div>
-                    <h3>Respect · 尊重</h3>
-                    <p>Those who fed the nation deserve to be remembered with dignity. 那些养活国家的人，应当被有尊严地记住。</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="section-heading">
-                <h2>What I Hope People Will Notice · 我希望人们关注什么</h2>
-                <p>
-                    A calm appeal can often travel further than a shout. 稳定而克制的呼吁，往往比激烈的口号传播得更远。
-                </p>
-            </div>
-            <div class="notice-grid">
-                <article class="callout-card">
-                    <div class="callout-icon">👴</div>
-                    <h3>Elderly Farmers · 老农保障</h3>
-                    <p>At the very least, elderly farmers deserve serious public attention and stronger basic protection in old age. 至少，老农的基本养老保障值得被更认真地关注。</p>
-                </article>
-                <article class="callout-card">
-                    <div class="callout-icon">🧭</div>
-                    <h3>Honest History · 诚实面对历史</h3>
-                    <p>This is not about erasing history, but about facing it more honestly. 这不是要忘记历史，而是要更诚实地面对历史。</p>
-                </article>
-                <article class="callout-card">
-                    <div class="callout-icon">🤝</div>
-                    <h3>Shared Memory · 集体记忆</h3>
-                    <p>Many families remember the same scenes. Their voices matter. 很多家庭都记得类似场景，这些声音值得被看见。</p>
+                    <h3>Dignity & Protection · 尊严与保障</h3>
+                    <p>
+                        Those who helped feed the nation deserve not only remembrance, but also more serious public attention and stronger basic protection in old age.
+                        那些曾经帮助养活国家的人，不仅值得被记住，也值得在晚年得到更认真地关注和更有力的基本保障。
+                    </p>
                 </article>
             </div>
         </div>
@@ -1090,10 +1151,8 @@
 
 <footer class="site-footer">
     <div class="footer-content">
-
         <p class="footer-title">Contact · 联系方式</p>
-
-        <p style="text-align: center; font-size: 1.05rem; margin: 40px 0 20px;">
+        <p style="text-align: center; font-size: 1.05rem; margin: 20px 0 20px;">
             Stories, questions, or ideas? We’d love to hear from you.<br>
             无论故事、问题还是想法，我们都欢迎您联系
         </p>
@@ -1129,10 +1188,36 @@
         });
     }
 
-    // 自动轮播（每5秒切换一次）
     setInterval(() => {
         currentIndex = (currentIndex + 1) % 3;
         switchSlide(currentIndex);
     }, 5000);
+
+    const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+    const sections = Array.from(navLinks)
+        .map(link => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+    function updateActiveNav() {
+        const navHeight = document.querySelector(".nav").offsetHeight;
+        const scrollPos = window.scrollY + navHeight + 120;
+
+        let currentSectionId = "";
+
+        sections.forEach(section => {
+            if (scrollPos >= section.offsetTop) {
+                currentSectionId = section.id;
+            }
+        });
+
+        navLinks.forEach(link => {
+            const isActive = link.getAttribute("href") === "#" + currentSectionId;
+            link.classList.toggle("active", isActive);
+        });
+    }
+
+    window.addEventListener("scroll", updateActiveNav, {passive: true});
+    window.addEventListener("load", updateActiveNav);
+    window.addEventListener("resize", updateActiveNav);
 </script>
 </html>
