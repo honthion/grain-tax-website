@@ -4,12 +4,12 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>China’s Grain Tax & Rural Pension Gap | A Farmer’s Son Remembers</title>
-    <meta property="og:title" content="They Fed the Nation — Why Are Farmers Left Behind?">
-    <meta property="og:description" content="Memories of China's grain tax and the pension gap faced by rural farmers.">
+    <meta property="og:image" content="https://grainmemory.org/images/og-cover.png">
+    <meta property="og:title" content="养活国家的人 不该被遗忘 | They Fed the Nation — But Who Will Care for Them?">
+    <meta property="og:description" content="中国公粮记忆档案 | A Public Memory Project on China’s Grain Tax Era">
     <meta name="description" content="A project documenting memories of China's grain tax era. Farmers' stories, historical context, and public contributions remembered.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://grainmemory.org">
-    <meta property="og:image" content="https://grainmemory.org/images/hero.jpg">
     <style>
         :root {
             --bg: #f7f3ea;
@@ -863,6 +863,88 @@
                 position: static;
             }
         }
+
+        .floating-cta {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: var(--accent);
+            color: #000;
+            padding: 12px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .share-bar {
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        .share-label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .share-btn {
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            background: #fff;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        /* hover效果（关键） */
+        .share-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 品牌色（轻量，不要太重） */
+        .share-btn.twitter {
+            border-color: #1DA1F2;
+        }
+
+        .share-btn.facebook {
+            border-color: #1877F2;
+        }
+
+        .share-btn.weibo {
+            border-color: #E6162D;
+        }
+
+        .share-btn.wechat {
+            border-color: #07C160;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            border: 1px solid #000;
+            background: #fff;
+            color: #5b5b5b;
+        }
+
+        .share-btn span {
+            font-size: 0.85rem;
+            color: #5b5b5b;
+        }
     </style>
 </head>
 <body>
@@ -904,11 +986,48 @@
                 <a class="btn btn-secondary" href="#memory">Share Your Memory</a>
             </div>
         </div>
+        <div class="share-bar">
+            <p style="font-size:13px; color:#aaa; margin-bottom:10px;">
+                Help this memory be seen · 让这段记忆被更多人看到
+            </p>
+            <div class="share-buttons">
+
+                <a class="share-btn twitter"
+                   href="https://twitter.com/intent/tweet?text=They%20Fed%20the%20Nation%20—%20But%20Who%20Will%20Care%20for%20Them?&url=https://grainmemory.org"
+                   target="_blank">
+                    ✖
+                    <span>Twitter</span>
+                </a>
+
+                <a class="share-btn facebook"
+                   href="https://www.facebook.com/sharer/sharer.php?u=https://grainmemory.org"
+                   target="_blank">
+                    📘
+                    <span>Facebook</span>
+                </a>
+
+                <a class="share-btn weibo"
+                   href="https://service.weibo.com/share/share.php?url=https://grainmemory.org&title=养活国家的人，不该被遗忘"
+                   target="_blank">
+                    🔴
+                    <span>Weibo</span>
+                </a>
+
+                <button class="share-btn wechat" onclick="showWechatTip()">
+                    🟢
+                    <span>朋友圈</span>
+                </button>
+
+
+            </div>
+        </div>
     </div>
 </header>
 
 <main>
-
+    <a class="floating-cta" href="#memory">
+        Share Your Story
+    </a>
     <!-- 新增：交公粮历史 section（风格统一） -->
     <section id="history" class="history-section">
         <div class="container">
@@ -1424,5 +1543,9 @@
     window.addEventListener("scroll", updateActiveNav, {passive: true});
     window.addEventListener("load", updateActiveNav);
     window.addEventListener("resize", updateActiveNav);
+
+    function showWechatTip() {
+        alert("请点击右上角「…」→ 选择「分享到朋友圈」\n或截图分享这张图片。");
+    }
 </script>
 </html>
