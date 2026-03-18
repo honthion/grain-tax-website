@@ -718,6 +718,151 @@
             box-shadow: 0 0 8px rgba(201, 162, 39, 0.45),
             0 0 14px rgba(201, 162, 39, 0.25);
         }
+
+        .memory-story-section {
+            background: linear-gradient(180deg, #f7f3ea 0%, #f2ecdf 100%);
+        }
+
+        .memory-intro-card,
+        .memory-guide-card {
+            border-radius: var(--radius);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .memory-intro-card {
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .memory-intro-eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            background: #f3eddf;
+            border: 1px solid var(--line);
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        .memory-intro-card h3 {
+            font-size: clamp(1.45rem, 3vw, 2.1rem);
+            margin-bottom: 12px;
+        }
+
+        .memory-intro-card p {
+            margin: 0 0 14px;
+            color: var(--muted);
+        }
+
+        .memory-guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .memory-guide-card {
+            padding: 26px;
+        }
+
+        .memory-guide-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+        }
+
+        .memory-guide-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .memory-guide-list li + li {
+            margin-top: 16px;
+        }
+
+        .memory-guide-list strong {
+            color: var(--text);
+        }
+
+        .memory-guide-list span {
+            display: block;
+            margin-top: 4px;
+        }
+
+        .prompt-block {
+            padding: 18px;
+            border-radius: 16px;
+            background: #f8f3e8;
+            border: 1px solid var(--line);
+        }
+
+        .prompt-title {
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .prompt-block ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .prompt-block li + li {
+            margin-top: 8px;
+        }
+
+        .memory-note-box {
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-radius: 16px;
+            background: #fffaf0;
+            border: 1px solid var(--line);
+            color: #403c35;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 980px) {
+            .memory-guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .memory-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 28px;
+            align-items: start;
+        }
+
+        .memory-left,
+        .memory-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 右侧固定体验更高级（可选） */
+        .memory-right {
+            position: sticky;
+            top: 100px;
+        }
+
+        /* 移动端 */
+        @media (max-width: 980px) {
+            .memory-main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .memory-right {
+                position: static;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1105,50 +1250,104 @@
         </div>
     </section>
 
-    <section id="memory">
+    <section id="memory" class="memory-story-section">
         <div class="container">
             <div class="section-heading">
-                <h2>Share Your Grain Tax Memory · 讲出你的公粮记忆</h2>
-                <p>
-                    Turn a single story into a shared archive. 把个人故事变成一份集体记忆档案。
+                <h2>Share Your Story · 提交你的故事</h2>
+                <p style="color:var(--muted);">
+                    Your story may become part of a public archive or documentary collection.
+                    <br>
+                    你的故事可能成为公共记忆的一部分。
                 </p>
             </div>
+            <div class="memory-main-grid">
 
-            <div class="memory-layout">
-                <div class="memory-card">
-                    <h3 style="font-size:1.35rem;">What to share · 可以分享什么</h3>
-                    <p>Did your family also deliver public grain? Do you remember the grain station, the inspections, unpaid labor, or the feeling of those years?</p>
-                    <p>你的家庭也交过公粮吗？你是否还记得粮站、铁戳子检查、义工修路修水库，或者那个年代的感受？</p>
-                    <ul>
-                        <li>Your province or hometown · 你的省份或家乡</li>
-                        <li>Your memory of delivering grain · 你对交公粮的记忆</li>
-                        <li>What your family lost or endured · 你的家庭承受了什么</li>
-                        <li>Whether you want to remain anonymous · 是否匿名</li>
-                    </ul>
-                    <div class="privacy-note">
-                        <strong>Privacy note · 隐私提示</strong><br/>
-                        Please avoid submitting sensitive personal information. You may use a nickname or remain anonymous. Submissions may be edited for clarity before any public display.<br/><br/>
-                        请不要提交敏感个人信息。你可以使用昵称，或选择匿名。若将来公开展示，内容可能会在不改变原意的前提下做文字整理。
+                <!-- 左侧：引导 -->
+                <div class="memory-left">
+
+                    <div class="memory-intro-card">
+                        <div class="memory-intro-eyebrow">Oral History · 口述记忆</div>
+                        <h3>This is not a test. There is no “perfect” answer.</h3>
+                        <p>
+                            Even one remembered scene — a grain sack, a long queue, a metal probe —
+                            can help preserve a history that is fading from public memory.
+                        </p>
+                        <p>
+                            哪怕只是一个画面——一个粮袋、一条长队、一根铁戳子——
+                            都可能帮助留住一段正在被遗忘的历史。
+                        </p>
+                    </div>
+
+                    <div class="memory-guide-card">
+                        <h3>What you can share · 可以写些什么</h3>
+
+                        <ul class="memory-guide-list">
+                            <li>
+                                <strong>A scene</strong><br>
+                                Waiting in line, inspections, or carrying grain.<br>
+                                <span>排队、检查、挑粮的场景。</span>
+                            </li>
+
+                            <li>
+                                <strong>Family impact</strong><br>
+                                Food, pressure, labor, daily life.<br>
+                                <span>口粮、压力、劳作、生活变化。</span>
+                            </li>
+
+                            <li>
+                                <strong>A person</strong><br>
+                                Parent, neighbor, cadre, inspector.<br>
+                                <span>父母、邻居、村干部、检查人员。</span>
+                            </li>
+
+                            <li>
+                                <strong>One moment</strong><br>
+                                A fear, loss, or unforgettable feeling.<br>
+                                <span>一个难忘瞬间或感受。</span>
+                            </li>
+                        </ul>
+
+                        <div class="prompt-block">
+                            <div class="prompt-title">Start with details · 从细节开始：</div>
+                            <ul>
+                                <li>When was it? · 哪一年？</li>
+                                <li>Who carried the grain? · 谁去交粮？</li>
+                                <li>How far was the station? · 粮站多远？</li>
+                                <li>What did people fear? · 最怕什么？</li>
+                            </ul>
+                        </div>
+
+                        <div class="memory-note-box">
+                            You may write in Chinese or English.<br>
+                            Even a few honest lines matter.<br><br>
+                            可以用中英文填写，真实比完整更重要。
+                        </div>
+
+                        <div class="memory-note-box">
+                            <strong>Anonymous & Safe · 匿名与安全</strong><br><br>
+
+                            No email or identity is collected.<br>
+                            You may remain anonymous.<br><br>
+
+                            本表单不会收集身份信息，你可以匿名填写。
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 右侧：提交 -->
+                <div class="memory-right">
+                    <div class="memory-submit-card">
+                        <iframe
+                                class="form-embed"
+                                src="https://docs.google.com/forms/d/e/1FAIpQLSfTF45k37JKn9Wv9OaGyq750zUa1sKuCuLxBQCbtUz2T3LLWw/viewform?embedded=true"
+                                width="100%"
+                                height="1100"
+                                frameborder="0">
+                        </iframe>
                     </div>
                 </div>
 
-                <div class="embed-card">
-                    <h3 style="font-size:1.35rem;">Form Embed · 表单嵌入</h3>
-                    <p style="margin-top:0; color:var(--muted);">Replace the placeholder below with your Google Forms or Typeform embed code. 把下面的占位区域替换为你的 Google Forms 或 Typeform 嵌入代码。</p>
-
-
-                    <iframe
-                            class="form-embed"
-                            title="Memory submission form placeholder"
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSfTF45k37JKn9Wv9OaGyq750zUa1sKuCuLxBQCbtUz2T3LLWw/viewform?embedded=true"
-                            width="640"
-                            height="1036"
-                            frameborder="0"
-                            marginheight="0"
-                            marginwidth="0">
-                        正在加载…
-                    </iframe>
-                </div>
             </div>
         </div>
     </section>
@@ -1156,26 +1355,27 @@
 
 <footer class="site-footer">
     <div class="footer-content">
-        <p class="footer-title">Contact · 联系方式</p>
-        <p style="text-align: center; font-size: 1.05rem; margin: 20px 0 20px;">
-            Stories, questions, or ideas? We’d love to hear from you.<br>
-            无论故事、问题还是想法，我们都欢迎您联系
+        <p class="footer-title">Contact & Contributions · 联系与投稿</p>
+
+        <p style="text-align:center; font-size:1.05rem; margin:20px 0; line-height:1.8;">
+            If you have a memory to share, a question to ask, or materials that may help preserve this history, please get in touch.<br>
+            如果你有想分享的记忆、想提出的问题，或能帮助保存这段历史的材料，欢迎联系。
         </p>
 
         <p>
-            Email:
-            <a href="mailto:grainmemory@gmail.com">
-                grainmemory@gmail.com
-            </a>
+            <strong>Email · 邮箱：</strong>
+            <a href="mailto:grainmemory@gmail.com">grainmemory@gmail.com</a>
         </p>
 
         <p>
-            Website:
-            <a href="https://grainmemory.org">
-                grainmemory.org
-            </a>
+            <strong>Website · 网站：</strong>
+            <a href="https://grainmemory.org">grainmemory.org</a>
         </p>
 
+        <p style="margin-top:24px; color:#777; font-size:0.95rem; line-height:1.8;">
+            A generation’s burden should not disappear into silence.<br>
+            一代人的负担，不应沉没于沉默之中。
+        </p>
     </div>
 </footer>
 </body>
