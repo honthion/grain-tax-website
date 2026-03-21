@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Grain Memory QR Cards - 4x2 Landscape</title>
+    <style>
+        @page {
+            size: Letter landscape;
+            margin: 0.2in;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+
+        .sheet {
+            width: 11in;
+            padding: 0.08in;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 4.05in 4.05in !important;
+            gap: 0.10in;
+            page-break-after: always;
+        }
+
+
+        .qr-wrap img {
+            width: 0.9in;
+            height: 0.9in;
+            object-fit: contain;
+            display: block;
+        }
+
+        .qr-wrap {
+            margin-bottom: 0.08in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .topline {
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: #5d6d7e;
+            text-transform: uppercase;
+            margin-bottom: 0.08in;
+        }
+
+        .title-en {
+            margin: 0;
+            font-size: 0.47in;
+            font-weight: 900;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.4px;
+        }
+
+        .title-red {
+            margin: 0.08in 0 0 0;
+            font-size: 0.34in;
+            font-weight: 900;
+            line-height: 0.92;
+            text-transform: uppercase;
+            color: #b00000;
+            letter-spacing: -0.2px;
+        }
+
+        .title-cn {
+            margin: 0.12in 0 0 0;
+            font-size: 0.15in;
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .sub {
+            margin: 0.16in 0 0 0;
+            font-size: 0.13in;
+            line-height: 1.2;
+        }
+
+        .bottom {
+            margin-top: 0.14in;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .cta {
+            margin: 0;
+            font-size: 0.12in;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .site {
+            margin: 0.04in 0 0 0;
+            font-size: 0.12in;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        @media screen {
+            body {
+                background: #e9e9e9;
+            }
+
+            .sheet {
+                margin: 10px auto;
+            }
+        }
+
+        .card {
+            border: 0 solid #222;
+            border-radius: 10px;
+            background: #fff;
+            padding: 0.14in 0.14in 0.14in 0.14in;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .topline {
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0.08in;
+        }
+
+        .hook-en {
+            margin: 0;
+            font-size: 0.30in;
+            font-weight: 900;
+            line-height: 0.93;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .hook-cn {
+            margin: 0.10in 0 0 0;
+            font-size: 0.16in;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #000;
+        }
+
+        .sub {
+            margin: 0.10in 0 0 0;
+            font-size: 0.13in;
+            line-height: 1.2;
+            color: #000;
+        }
+
+        .qr-wrap img {
+            width: 1.45in;
+            height: 1.45in;
+            object-fit: contain;
+            display: block;
+        }
+
+        .cta {
+            margin: 0;
+            font-size: 0.13in;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+            color: #000;
+        }
+
+        .site {
+            margin: 0.04in 0 0 0;
+            font-size: 0.11in;
+            text-align: center;
+            line-height: 1.1;
+            color: #222;
+        }
+
+
+        /* 顶部 */
+        .back-top {
+            margin-bottom: 0.12in;
+        }
+
+        .back-topline {
+
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0.08in;
+        }
+
+        .back-hook {
+            margin: 0;
+            font-size: 0.23in;
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .back-second {
+            margin-top: 0.04in;
+        }
+
+        /* 中间故事 */
+        .back-story {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.07in;
+        }
+
+        .back-story p {
+            margin: 0;
+            font-size: 0.125in;
+            line-height: 1.28;
+            color: #000;
+        }
+
+        /* 底部 */
+        .back-bottom {
+            display: none;
+            margin-top: 0.14in;
+            text-align: center;
+        }
+
+        .back-cta {
+            margin: 0;
+            font-size: 0.13in;
+            font-weight: 700;
+        }
+
+        .back-site {
+            margin: 0.04in 0 0 0;
+            font-size: 0.11in;
+            color: #222;
+        }
+
+        @media print {
+            body {
+                background: #fff !important;
+            }
+
+            .sheet {
+                background: #fff !important;
+            }
+        }
+
+        .back-card {
+            border: #FFF;
+        }
+    </style>
+</head>
+<body>
+<div class="sheet">
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="top">
+            <div class="topline">A MEMORY PROJECT</div>
+            <h1 class="hook-en">WHERE IS THEIR PENSION?</h1>
+            <p class="hook-cn">农民养活了国家，他们的养老金在哪里？</p>
+            <p class="sub">30× gap most people don’t know</p>
+        </div>
+
+        <div class="bottom">
+            <div class="qr-wrap">
+                <img src="web_qr.png" alt="QR Code">
+            </div>
+            <p class="cta">Scan to see the real story behind this</p>
+            <p class="site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+    <div class="card back-card">
+        <div class="back-top">
+            <div class="back-topline">A MEMORY PROJECT</div>
+            <h1 class="back-hook">HE FED THE NATION.</h1>
+            <h2 class="back-hook back-second">WHO FEEDS HIM NOW?</h2>
+        </div>
+
+        <div class="back-story">
+            <p>He woke up before sunrise, year after year.</p>
+            <p>Working the same fields, under the same sky.</p>
+            <p>Every harvest, a portion of his grain was taken — not by choice, but as a duty.</p>
+            <p>It was called “contribution.”</p>
+
+            <p>Now he is old.</p>
+            <p>His hands are still rough, but the fields are no longer his.</p>
+            <p>His monthly pension is about $30.</p>
+
+            <p>He fed the nation.</p>
+            <p>But who feeds him now?</p>
+        </div>
+
+        <div class="back-bottom">
+
+            <p class="back-site">grainmemory.org</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
