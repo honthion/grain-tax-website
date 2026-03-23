@@ -267,6 +267,22 @@
         .back-card {
             border: #FFF;
         }
+
+        @media print {
+            body, html {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            * {
+                box-shadow: none !important;
+                border-right: none !important;
+            }
+
+            .card, div[style*="border"], [class*="border"] {
+                border: none !important;
+            }
+        }
     </style>
 </head>
 <body>
